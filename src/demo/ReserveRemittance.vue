@@ -1,15 +1,15 @@
 <template>
   <div class="dy-main">
     <div class="dy-header">
-      <x-header :right-options="{showMore: true}" @on-click-more="showMenus = true" :left-options="{preventGoBack:true}" @on-click-back="back">预约转账</x-header>
-      <div class="tabWrap">
+     <x-header>This is the page title.</x-header>
+    </div>
+    <div class="dy-body">
+       <div class="tabWrap">
         <button-tab v-model="tabSelected">
           <button-tab-item @on-item-click="tabShow = '1'">我要预约</button-tab-item>
           <button-tab-item @on-item-click="tabShow = '2'">预约查询和撤销</button-tab-item>
         </button-tab>
       </div>
-    </div>
-    <div class="dy-body">
       <div class="tabContent" v-show="tabShow === '1'">
         <div class="title">付款方信息</div>
         <group class="group" gutter="0.05rem">
@@ -39,6 +39,7 @@
         </div>
       </div>
       <div class="tabContent" v-show="tabShow === '2'">
+        <div class="title">预约信息</div>
         <group class="group" gutter="0.05rem">
             <popup-picker class="f15" popup-title="请选择" title="付款账号"  :data="cardList" v-model="cardNoQuery" placeholder="请选择账号" ></popup-picker>
             <popup-picker  title="定时种类" :data="intervalTypeList" v-model="intervalTypeQuery" placeholder="请选择"></popup-picker>
@@ -53,33 +54,44 @@
         </div>
       </div>
     </div>
-    
-    <!--<div class="dy-footer"></div>-->
+  <!--<div class="dy-footer"></div>-->
   </div>
 </template>
 <script>
 // Todo 存单号列表
+import { XHeader, ButtonTab, ButtonTabItem, Group, XInput, Cell, PopupPicker, Datetime, XButton } from 'vux'
 export default{
+  components: {
+    XHeader,
+    ButtonTab,
+    ButtonTabItem,
+    Group,
+    XInput,
+    Cell,
+    PopupPicker,
+    Datetime,
+    XButton
+  },
   data () {
     return {
-      cardList: [['6210 **** **** 1219', '6210 **** **** 3341','6210 **** **** 2567']],
-      purposeList: [['还款','消费','转账']],//付款用途
-      selectTypeList: [['还款']],//选择种类
-      intervalTypeList: [['一次','两次']],//定时种类
+      cardList: [['6210 **** **** 1219', '6210 **** **** 3341', '6210 **** **** 2567']],
+      purposeList: [['还款', '消费', '转账']], // 付款用途
+      selectTypeList: [['还款']], // 选择种类
+      intervalTypeList: [['一次', '两次']], // 定时种类
       purpose: ['消费'],
       selectType: ['还款'],
-      intervalType:['一次'],
-      intervalTypeQuery:[],
+      intervalType: ['一次'],
+      intervalTypeQuery: [],
       tabSelected: 0,
       tabShow: '1',
       cardNo: ['6210 **** **** 1219'], // 卡号
-      cardNoQuery: [],//查询记录是选卡
-      cardAlias: '银行卡',//别名
+      cardNoQuery: [], // 查询记录是选卡
+      cardAlias: '银行卡', // 别名
       currType: '人民币', // 币种
       tranAmt: '1000.00', // 转出金额
-      uppercaseAmt: '壹仟元',//大写金额
-      payeeName: '',//收款人/
-      payeeAccno: '',//收款人账号/
+      uppercaseAmt: '壹仟元', // 大写金额
+      payeeName: '', // 收款人/
+      payeeAccno: '', // 收款人账号/
       startDate: '2018-05-20',
       startDateQuery: '2018-04-20',
       endDateQuery: '2018-05-20'
@@ -94,19 +106,19 @@ export default{
       this.tipsShow = true
     },
     gotoNext () { // 1活转定 2定转活
-      let that = this
-      this.$router.push({path: 'ReserveRemitSure', query: {cardNo: this.cardNo[0], tranAmt: this.tranAmt, payeeName: this.payeeName, payeeAccno: this.payeeAccno,intervalType:this.intervalType[0], purpose: this.purpose[0], startDate: this.startDate}})
+      // let that = this
+      this.$router.push({path: 'ReserveRemitSure', query: {cardNo: this.cardNo[0], tranAmt: this.tranAmt, payeeName: this.payeeName, payeeAccno: this.payeeAccno, intervalType: this.intervalType[0], purpose: this.purpose[0], startDate: this.startDate}})
     },
     gotoQuery () {
       console.log('调用查询接口')
     },
-    change (val){
+    change (val) {
       this.startDate = val
     },
-    changeStart (val){
+    changeStart (val) {
       this.startDateQuery = val
     },
-    changeEnd (val){
+    changeEnd (val) {
       this.endDateQuery = val
     }
   }
@@ -209,6 +221,4 @@ export default{
       }
     }
   }
-
 </style>
-

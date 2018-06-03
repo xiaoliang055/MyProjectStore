@@ -1,0 +1,94 @@
+*{
+  font-size: 15px;
+  text-decoration: none;
+}
+.poc-main {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction:column;
+}
+.poc-header {
+  width: 100%;
+  height: auto;
+}
+.poc-body{
+  width: 100%;
+  height: 100%;
+  flex:1;
+  overflow: auto;
+}
+.weui-btn_primary{
+  background-color: #11ACF4 !important;
+}
+.weui-toast{
+  width: auto !important;
+  min-height: auto !important;
+  padding: 0 10px !important;
+}
+.content{
+  margin: 0 8px;
+}
+.color1{
+  color:coral;
+}
+.blue{
+  color: #11ACF4;
+}
+.btn{
+  font-size: 15px;
+  margin-top: 20px;
+}
+.label-text{
+  text-align: left;
+  padding: 0 15px;
+}
+.marginT10{
+  margin-top: 10px;
+}
+.group{
+  background-color: white;
+  border-radius: 5px;
+  margin-top: 10px;
+  border: 1px solid #D9D9D9;
+}
+.group .weui-cells{
+  border-radius: 5px !important;
+}
+.group .weui-cells:before{
+  border:0 !important;
+}
+.group .weui-cells:after{
+  border: 0 !important;
+}
+.weui-cell {
+  text-align: left;
+  font-size: 15px;
+}
+.vux-cell-primary{
+  width: 6em;
+  flex: none !important;
+}
+.vux-popup-picker-select-box{
+  flex: 1 !important;
+}
+.vux-datetime-value{
+  flex: 1 !important;
+  text-align: left !important;
+}
+.weui-label{
+  width: 6em !important;
+}
+.vux-popup-picker-select{
+  text-align: left !important;
+}
+.vux-datetime > div >p{
+  width:6rem;
+}
+.vux-cell-box{
+  padding:5px 0 3px 5px;
+}
+.cells .vux-cell-primary{
+  flex: 1 !important;
+}
